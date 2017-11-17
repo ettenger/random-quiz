@@ -1,6 +1,7 @@
 import { QUESTION_GROUPS } from './question-groups';
 import { REVEALS } from './reveals';
 import { VERBS } from './verbs';
+import { Result } from './result';
 
 export class Quiz {
   question: string;
@@ -18,12 +19,17 @@ export class Quiz {
     return this.randomItem(keys);
   }
 
-  randomItem(arr: string[]): string {
+  randomItem(arr: any[]): any {
     const randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
   }
 
   get title(): string {
     return `What your ${this.question} ${this.verb} about ${this.reveal}?`
+  }
+
+  calculateResult(): Result {
+    const possibleAnswers = REVEALS[this.reveal];
+    return this.randomItem(possibleAnswers);
   }
 }

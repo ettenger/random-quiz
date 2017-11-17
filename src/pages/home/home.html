@@ -6,4 +6,16 @@
 
 <ion-content padding>
   <h2>{{quiz?.title}}</h2>
+  <button ion-button (click)="calculateAnswer()" color="secondary">Calculate!</button>
+  <ion-card *ngIf="result">
+    <img [src]="result.image"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{result.name}}
+        </ion-card-title>
+      <p>
+        {{result.description}}
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
